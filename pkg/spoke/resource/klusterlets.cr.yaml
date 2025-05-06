@@ -25,8 +25,8 @@ spec:
       key: sigma.ali/is-over-quota
       operator: Equal
       value: "true"
-  registrationImagePullSpec: quay.io/open-cluster-management/registration:v0.5.0
-  workImagePullSpec: quay.io/open-cluster-management/work:v0.5.0
+  registrationImagePullSpec: quay.io/open-cluster-management/registration:v0.16.0
+  workImagePullSpec: quay.io/open-cluster-management/work:v0.16.0
   clusterName: {{ .Name }}
   namespace: open-cluster-management-agent
   externalServerURLs:

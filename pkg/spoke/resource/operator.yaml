@@ -75,7 +75,7 @@ spec:
       serviceAccountName: klusterlet
       containers:
         - name: klusterlet
-          image: reg.docker.alibaba-inc.com/ant-runtime/registration-operator:v0.5.0
+          image: reg.docker.alibaba-inc.com/ant-runtime/registration-operator:v0.16.0
           args:
             - "/registration-operator"
             - "klusterlet"
