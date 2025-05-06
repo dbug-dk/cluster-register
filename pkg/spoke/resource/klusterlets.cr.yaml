@@ -7,6 +7,7 @@ metadata:
     sigma.ali/instance-group: androidcloudhost
     sigma.ali/site: eu126
     meta.k8s.alipay.com/zone: CZ00C
+    sigma.ali/deploy-unit: androidcloud-dev
 spec:
   nodePlacement:
     nodeSelector:
