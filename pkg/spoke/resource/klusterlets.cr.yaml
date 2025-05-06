@@ -9,6 +9,17 @@ metadata:
     meta.k8s.alipay.com/zone: CZ00C
     sigma.ali/deploy-unit: androidcloud-dev
 spec:
+  resourceRequirement:
+    type: ResourceRequirement
+    resourceRequirements:
+      limits:
+        cpu: "1"
+        ephemeral-storage: 25Gi
+        memory: 1Gi
+      requests:
+        cpu: "1"
+        ephemeral-storage: 25Gi
+        memory: 1Gi
   nodePlacement:
     nodeSelector:
       sigma.ali/is-over-quota: "true"

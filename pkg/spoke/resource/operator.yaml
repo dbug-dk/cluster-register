@@ -80,6 +80,7 @@ spec:
             - "/registration-operator"
             - "klusterlet"
             - "--enable-sync-labels=true"
+            - "--deployment-replicas=1"
           livenessProbe:
             httpGet:
               path: /healthz
