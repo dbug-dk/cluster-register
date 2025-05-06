@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   annotations:
     workload.openshift.io/allowed: "management"
-  name: open-cluster-management-xic
+  name: open-cluster-management-agent
