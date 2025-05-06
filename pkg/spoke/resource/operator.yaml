@@ -45,6 +45,7 @@ spec:
           args:
             - "/registration-operator"
             - "klusterlet"
+            - "--enable-sync-labels=true"
           livenessProbe:
             httpGet:
               path: /healthz

@@ -2,10 +2,31 @@ apiVersion: operator.open-cluster-management.io/v1
 kind: Klusterlet
 metadata:
   name: klusterlet
+  labels:
+    sigma.ali/app-name: androidcloud
+    sigma.ali/instance-group: androidcloudhost
+    sigma.ali/site: eu126
+    meta.k8s.alipay.com/zone: CZ00C
 spec:
+  nodePlacement:
+    nodeSelector:
+      sigma.ali/is-over-quota: "true"
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoSchedule
+      key: sigma.ali/is-over-quota
+      operator: Equal
+      value: "true"
   registrationImagePullSpec: quay.io/open-cluster-management/registration:v0.5.0
   workImagePullSpec: quay.io/open-cluster-management/work:v0.5.0
   clusterName: {{ .Name }}
-  namespace: open-cluster-management-agent
+  namespace: open-cluster-management-xic
   externalServerURLs:
     - url: {{ .HubInfo.APIServer }}
