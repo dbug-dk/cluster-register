@@ -5,11 +5,6 @@ metadata:
   namespace: open-cluster-management
   labels:
     app: klusterlet
-    sigma.ali/app-name: androidcloud
-    sigma.ali/instance-group: androidcloudhost
-    sigma.ali/site: eu126
-    meta.k8s.alipay.com/zone: CZ00C
-    sigma.ali/deploy-unit: androidcloud-dev
 spec:
   replicas: 1
   selector:
@@ -21,15 +16,7 @@ spec:
         target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
       labels:
         app: klusterlet
-        sigma.ali/app-name: androidcloud
-        sigma.ali/instance-group: androidcloudhost
-        sigma.ali/site: eu126
-        meta.k8s.alipay.com/zone: CZ00C
-        sigma.ali/deploy-unit: androidcloud-dev
     spec:
-      securityContext:
-        runAsUser: 0
-        runAsGroup: 0
       tolerations:
       - effect: NoExecute
         key: node.kubernetes.io/not-ready
@@ -39,19 +26,7 @@ spec:
         key: node.kubernetes.io/unreachable
         operator: Exists
         tolerationSeconds: 300
-      - effect: NoSchedule
-        key: sigma.ali/is-over-quota
-        operator: Equal
-        value: "true"
       affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: sigma.ali/is-over-quota
-                operator: In
-                values:
-                  - "true"
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
             - weight: 70
